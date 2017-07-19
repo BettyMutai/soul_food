@@ -1,0 +1,7 @@
+development:
+	adapter: postgresql
+	database: soul_food_dev
+test:
+	adapter: postgresql
+	database: soul_food_test
+	
