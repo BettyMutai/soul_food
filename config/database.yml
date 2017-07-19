@@ -1,7 +1,6 @@
 development:
-	adapter: postgresql
-	database: soul_food_dev
+  adapter: postgresql
+  database: soul_food_dev
 test:
-	adapter: postgresql
-	database: soul_food_test
-	
+  adapter: postgresql
+  database: soul_food_test
