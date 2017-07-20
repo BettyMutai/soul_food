@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col s6">
+    <h1>Recipes</h1>
+    <form action="/recipes" method="post">
+      <label for="recipe">Enter Recipe:</label>
+      <input class="form-control" type="text" name="recipe" id="recipe" required>
+      <label for="ingredients">Ingredients</label>
+      <input type="text" name="ingredients" id="ingredients">
+      <label for="instructions">instructions</label>
+      <input type="text" name="instructions" id="instructions">
+      <label for="cost">Estimated Cost:</label>
+      <input type="text" name="cost" id="cost" required>
+      <label for="tag">Add Tag</label></br>
+      <% if @tags.any? %>
+        <% @tags.each do |tag| %>
+          <input checked="checked" type="checkbox" name="tag_id" id="<%= tag.name %>" value="<%= tag.id %>">
+          <label for="<%= tag.name %>"><%= tag.name %></label></br>
+        <% end %>
+      <% else %>
+        <p>Please add tags</p>
+      <% end %>
+
+      <button class="btn waves-effect waves-light" type="submit" name="button">Add Recipe</button>
+    </form>
+    <div class="card">
+      <% if @recipes.any? %>
+        <% @recipes.each do |recipe| %>
+          <ul>
+            <li><a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
+          </ul>
+        <% end %>
+      <% else %>
+        <p>Nothing here :(</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col s6">
+    <h1>Tags</h1>
+    <form action="/tags" method="post">
+      <label for="tag">Enter Category:</label>
+      <input class="form-control" type="text" name="tag" id="tag" placeholder="eg. Seafood" required>
+      <button class="btn waves-effect waves-light" type="submit" name="button">Add Category</button>
+    </form>
+    <div class="card">
+      <% if @tags.any? %>
+        <% @tags.each do |tag| %>
+          <ul>
+            <li><a href="/tags/<%= tag.id %>"><%= tag.name %></a></li>
+          </ul>
+        <% end %>
+      <% else %>
+        <p>Nothing here :(</p>
+      <% end %>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+<%= @recipe.name %> successfuly added!! \o/ Yeah!!
+<% @recipe.tags.each do |tag| %>
+  This is category: <%= tag.name %>
+<% end %>
+<% @recipe.kitchens.each do |kitchen| %>
+  <%= kitchen.ingredients %>
+  <%= kitchen.instructions %>
+<% end %>
+</div>
+
+<h3>
+
+<form action="/recipes/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit"class="btn red">Delete</button>
+
+</form>
+
+<h3>Edit Recipe:</h3>
+<form action="/recipes/<%= @recipe.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="recipe">Recipe name:</label>
+  <input type="text" name="recipe" id="recipe" value="<%= @recipe.name %>">
+  <label for="ingredients">Ingredients:</label>
+  <input type="text" name="ingredients" id="ingredients" value="<%= @recipe.kitchens.first.ingredients %>">
+  <label for="instructions">Instructions:</label>
+  <input type="text" name="instructions" id="instructions" value="<%= @recipe.kitchens.first.instructions %>">
+  <label for="cost">Estimated Cost:</label>
+  <input type="text" name="cost" id="cost" value="<%= @recipe.price %>">
+
+  <button type="submit">Edit</button>
+</form>
